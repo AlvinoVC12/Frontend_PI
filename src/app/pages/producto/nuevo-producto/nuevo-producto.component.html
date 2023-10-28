@@ -1,2 +1,29 @@
-<p>nuevo-producto works!</p>
-<!--Hola-->
+<div class="container">
+    <h4 class="text-center">Registrar Producto</h4>
+    <form>
+       
+        <div class="mb-3">
+            <label for="disabledTextInput" class="form-label">Nombre</label>
+            <input type="text" class="form-control" name="nombre" [(ngModel)]="nombre">
+          <div class="mb-3">
+            <label for="disabledTextInput" class="form-label">Precio</label>
+            <input type="text" class="form-control" name="precio"  [(ngModel)]="precio">
+          </div>     
+          <div class="mb-3">
+            <label for="disabledTextInput" class="form-label">Stock</label>
+            <input type="text" class="form-control" name="stock" [(ngModel)]="stock">
+        </div>
+
+          <div class="mb-3">
+            <label for="disabledTextInput" class="form-label">Categoría</label>
+            <select class="form-select" [(ngModel)]="codCategoria" name="Conductor">
+              <option value="{{row.codigo}}" *ngFor="let row of listaCategorias">{{row.nombre}}</option>
+            </select>
+          </div>
+         
+
+          <button type="button" class="btn btn-primary"  (click)="grabarDatos()">Registrar</button>
+        </div>
+    </form>
+
+</div>
