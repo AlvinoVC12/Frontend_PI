@@ -1,0 +1,29 @@
+<div class="container">
+	<table class="table table-striped">
+			<thead>
+					<tr>
+							<th>Código</th>
+							<th>Nombre</th>
+							<th>Dirección</th>
+							<th>Contacto</th>
+							<th></th>
+							<th></th>
+					</tr>
+			</thead>
+			<tbody>
+					<tr *ngFor="let item of listaProveedores">
+							<td>{{item.codigo}}</td>
+							<td>{{item.nombre}}</td>
+							<td>{{item.direccion}}</td>
+							<td>{{item.contacto}}</td>
+							<td>{{item.categoria.nombre}}</td>
+							<td>
+									<button type="button" class="btn btn-warning" (click)="editar(item.codigo)">Editar</button>
+							</td>
+							<td>
+									<button type="button" class="btn btn-danger" (click)="eliminar(item.codigo)">Eliminar</button>
+							</td>
+					</tr>
+			</tbody>
+	</table>
+</div>

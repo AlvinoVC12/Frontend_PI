@@ -9,6 +9,10 @@ import { NuevoProductoComponent } from './pages/producto/nuevo-producto/nuevo-pr
 import { ListaProductoComponent } from './pages/producto/lista-producto/lista-producto.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SidebarComponent } from './pages/sidebar/sidebar.component';
+import { ListaOrdenCompraComponent } from './pages/orden-compra/lista-orden-compra/lista-orden-compra.component';
+import { AgregarOrdenCompraComponent } from './pages/orden-compra/agregar-orden-compra/agregar-orden-compra.component';
+import { ListarProveedorComponent } from './pages/proveedor/listar-proveedor/listar-proveedor.component';
+import { AgregarProveedorComponent } from './pages/proveedor/agregar-proveedor/agregar-proveedor.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +20,11 @@ import { SidebarComponent } from './pages/sidebar/sidebar.component';
     EditarProductoComponent,
     NuevoProductoComponent,
     ListaProductoComponent,
-    SidebarComponent
+    SidebarComponent,
+    ListaOrdenCompraComponent,
+    AgregarOrdenCompraComponent,
+    ListarProveedorComponent,
+    AgregarProveedorComponent
   ],
   imports: [
     BrowserModule,
