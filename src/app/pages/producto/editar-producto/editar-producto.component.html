@@ -1,1 +1,32 @@
-<p>editar-producto works!</p>
+<div class="container">
+    <h4 class="text-center">Actualizar Producto</h4>
+    <form [formGroup]="formulario" *ngIf="formulario">
+
+       
+
+        <div class="mb-3">
+            <label for="disabledTextInput" class="form-label">Nombre</label>
+            <input type="text" class="form-control" name="nombre" formControlName="nombre">
+        </div>
+        <div class="mb-3">
+            <label for="disabledTextInput" class="form-label">Precio</label>
+            <input type="text" class="form-control" name="precio" formControlName="precio">
+          <div class="mb-3">
+            <label for="disabledTextInput" class="form-label">Stock</label>
+            <input type="text" class="form-control" name="stock"  formControlName="stock">
+          </div>     
+         
+          <div class="mb-3">
+            <label for="disabledTextInput" class="form-label">Conductor</label>
+            <select class="form-select" formControlName="categoria" name="categoria">
+              <option [ngValue]="row" *ngFor="let row of listaCategorias">{{row.nombre}}</option>
+            </select>
+          </div>
+
+
+
+          <button type="button" class="btn btn-primary"  (click)="grabarDatos()">Actualizar</button>
+        </div>
+    </form>
+
+</div>
