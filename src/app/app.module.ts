@@ -8,13 +8,15 @@ import { EditarProductoComponent } from './pages/producto/editar-producto/editar
 import { NuevoProductoComponent } from './pages/producto/nuevo-producto/nuevo-producto.component';
 import { ListaProductoComponent } from './pages/producto/lista-producto/lista-producto.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { SidebarComponent } from './pages/sidebar/sidebar.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     EditarProductoComponent,
     NuevoProductoComponent,
-    ListaProductoComponent
+    ListaProductoComponent,
+    SidebarComponent
   ],
   imports: [
     BrowserModule,
