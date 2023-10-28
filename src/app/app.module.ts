@@ -7,7 +7,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { EditarProductoComponent } from './pages/producto/editar-producto/editar-producto.component';
 import { NuevoProductoComponent } from './pages/producto/nuevo-producto/nuevo-producto.component';
 import { ListaProductoComponent } from './pages/producto/lista-producto/lista-producto.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -20,7 +20,8 @@ import { FormsModule } from '@angular/forms';
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

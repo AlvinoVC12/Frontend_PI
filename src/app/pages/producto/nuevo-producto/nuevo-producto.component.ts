@@ -41,7 +41,7 @@ export class NuevoProductoComponent {
       }).then((result) => {
         if (result.isConfirmed) {
           
-          this.ruta.navigate(["producto-lista"])
+          this.ruta.navigate(["lista-producto"])
         }
       })
     })
