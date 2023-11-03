@@ -13,6 +13,10 @@ import { ListaOrdenCompraComponent } from './pages/orden-compra/lista-orden-comp
 import { AgregarOrdenCompraComponent } from './pages/orden-compra/agregar-orden-compra/agregar-orden-compra.component';
 import { ListarProveedorComponent } from './pages/proveedor/listar-proveedor/listar-proveedor.component';
 import { AgregarProveedorComponent } from './pages/proveedor/agregar-proveedor/agregar-proveedor.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {MatMenuModule} from '@angular/material/menu';
+import {MatSidenavModule} from '@angular/material/sidenav';
+import {MatInputModule} from '@angular/material/input';
 
 @NgModule({
   declarations: [
@@ -20,18 +24,22 @@ import { AgregarProveedorComponent } from './pages/proveedor/agregar-proveedor/a
     EditarProductoComponent,
     NuevoProductoComponent,
     ListaProductoComponent,
-    SidebarComponent,
     ListaOrdenCompraComponent,
     AgregarOrdenCompraComponent,
     ListarProveedorComponent,
-    AgregarProveedorComponent
+    AgregarProveedorComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    BrowserAnimationsModule,
+    SidebarComponent,
+    MatMenuModule,
+    MatSidenavModule,
+    MatInputModule
   ],
   providers: [],
   bootstrap: [AppComponent]
