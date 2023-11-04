@@ -18,6 +18,11 @@ export class NuevoProductoComponent {
   stock:number
   categoria:Categoria
   codCategoria:number
+  errores: boolean =false;
+
+  nombrePattern = /^[A-Za-z\s]+$/ // Solo letras y espacios para el nombre
+  precioPattern = /^\d+(\.\d{1,2})?$/ // Números enteros o decimales con hasta 2 decimales para el precio
+  stockPattern = /^\d+$/ // Solo números enteros para el stock
 
   listaCategorias:Categoria[]=[]
 
@@ -30,6 +35,27 @@ export class NuevoProductoComponent {
   }
 
   grabarDatos(){
+    this.errores = false
+    if (
+      !this.nombre ||
+      !this.precio ||
+      !this.stock ||
+      !this.codCategoria ||
+      !this.nombrePattern.test(this.nombre) ||
+      !this.precioPattern.test(this.precio.toString()) ||
+      !this.stockPattern.test(this.stock.toString()) ||
+      !this.codCategoria
+    ) {
+      // Mostrar una alerta de que algunos campos son inválidos o están vacíos
+      Swal.fire({
+        text: 'Por favor, completa todos los campos correctamente.',
+        icon: 'error',
+        confirmButtonColor: '#3085d6',
+      });
+      this.errores = true
+      return; // No continuar con el registro si hay campos vacíos o inválidos
+    }
+
     this.categoria=new Categoria(this.codCategoria,"")
     var objPro=new Producto(0,this.nombre,this.precio,this.stock,this.categoria)
     this.apiPro.saveProducto(objPro).subscribe(response=>{

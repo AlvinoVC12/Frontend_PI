@@ -3,22 +3,32 @@
     <form>
        
         <div class="mb-3">
-            <label for="disabledTextInput" class="form-label">Nombre</label>
+            <label for="nombre" class="form-label">Nombre</label>
             <input type="text" class="form-control" name="nombre" [(ngModel)]="nombre">
-          <div class="mb-3">
-            <label for="disabledTextInput" class="form-label">Precio</label>
+            <div *ngIf="errores && (!nombre || !nombrePattern.test(nombre))" class="error-message">
+              El campo Nombre es obligatorio y solo debe contener letras y espacios.
+          </div>
+            <div class="mb-3">
+            <label for="precio" class="form-label">Precio</label>
             <input type="text" class="form-control" name="precio"  [(ngModel)]="precio">
-          </div>     
+            <div *ngIf="errores && (!precio || !precioPattern.test(precio.toString()))" class="error-message">
+              El campo Precio es obligatorio y debe ser un número decimal válido (pueden ser enteros o decimales con hasta dos decimales).
+          </div>
+                  </div>     
           <div class="mb-3">
-            <label for="disabledTextInput" class="form-label">Stock</label>
+            <label for="stock" class="form-label">Stock</label>
             <input type="text" class="form-control" name="stock" [(ngModel)]="stock">
-        </div>
+            <div *ngIf="errores && (!stock || !stockPattern.test(stock.toString()))" class="error-message">
+              El campo Stock es obligatorio y debe ser un número entero válido.
+          </div>
+            </div>
 
           <div class="mb-3">
             <label for="disabledTextInput" class="form-label">Categoría</label>
             <select class="form-select" [(ngModel)]="codCategoria" name="Conductor">
               <option value="{{row.codigo}}" *ngFor="let row of listaCategorias">{{row.nombre}}</option>
             </select>
+            <div *ngIf="errores &&  !codCategoria" class="error-message">Debes seleccionar una Categoría.</div>
           </div>
          
 
