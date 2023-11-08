@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { Proveedor } from 'src/app/modelo/Proveedor';
 import { ProveedorService } from 'src/app/services/proveedor.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-listar-proveedor',
@@ -18,12 +19,31 @@ export class ListarProveedorComponent {
       this.listaProveedores = data
     })
   }
-  editar(codPro:number) {
-    this.router.navigate(['proveedor/editar/', codPro])
+  editar(codProve:number) {
+    this.router.navigate(['proveedor/editar/', codProve])
   }
   eliminar(codPro:number) {
-    this.api.deleteProveedor(codPro).subscribe(data => {
-      this.router.navigate([''])
+
+    Swal.fire({
+      title: '¿Desea eliminar?',
+      text: "Los cambios no se van a revertir",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Sí, elimina',
+      cancelButtonText: 'No, cancelar'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        this.api.deleteProveedor(codPro).subscribe(data => {
+          this.router.navigate(['lista-proveedor'])
+        });
+      }
     })
+
+
+
+
+
   }
 }

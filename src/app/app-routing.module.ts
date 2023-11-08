@@ -5,13 +5,15 @@ import { NuevoProductoComponent } from './pages/producto/nuevo-producto/nuevo-pr
 import { EditarProductoComponent } from './pages/producto/editar-producto/editar-producto.component';
 import { ListarProveedorComponent } from './pages/proveedor/listar-proveedor/listar-proveedor.component';
 import { AgregarProveedorComponent } from './pages/proveedor/agregar-proveedor/agregar-proveedor.component';
+import { EditarProveedorComponent } from './pages/proveedor/editar-proveedor/editar-proveedor.component';
 
 const routes: Routes = [
   { path: 'lista-producto', component:ListaProductoComponent },
   { path: 'nuevo-producto', component:NuevoProductoComponent },
   { path: 'producto/editar/:id', component:EditarProductoComponent },
   { path: 'lista-proveedor', component:ListarProveedorComponent },
-  {path: 'agregar-proveedor', component:AgregarProveedorComponent}
+  {path: 'agregar-proveedor', component:AgregarProveedorComponent},
+  {path: 'proveedor/editar/:id', component:EditarProveedorComponent}
 ];
 
 @NgModule({
