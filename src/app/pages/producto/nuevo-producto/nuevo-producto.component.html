@@ -1,7 +1,6 @@
 <div class="container">
     <h4 class="text-center">Registrar Producto</h4>
-    <form>
-       
+    <form [formGroup]="formulario" (ngSubmit)="grabarDatos()">
         <div class="mb-3">
             <label for="disabledTextInput" class="form-label">Nombre</label>
             <input type="text" class="form-control" name="nombre" [(ngModel)]="nombre">
@@ -20,18 +19,54 @@
           <div class="mb-3">
             <label for="disabledTextInput" class="form-label">Stock</label>
             <input type="text" class="form-control" name="stock" [(ngModel)]="stock">
+            <label for="nombre" class="form-label">Nombre</label>
+            <input type="text" class="form-control" formControlName="nombre">
+            <div *ngIf="formulario.get('nombre').hasError('required') && formulario.get('nombre').touched" class="error-message">
+                El campo "Nombre" es obligatorio.
+            </div>
+            <div *ngIf="formulario.get('nombre').hasError('nombreInvalido') && formulario.get('nombre').touched" class="error-message">
+                El campo "Nombre" solo debe contener letras.
+            </div>
         </div>
 
-          <div class="mb-3">
-            <label for="disabledTextInput" class="form-label">Categoría</label>
-            <select class="form-select" [(ngModel)]="codCategoria" name="Conductor">
-              <option value="{{row.codigo}}" *ngFor="let row of listaCategorias">{{row.nombre}}</option>
-            </select>
+        <div class="mb-3">
+            <label for="precio" class="form-label">Precio</label>
+            <input type="text" class="form-control" formControlName="precio">
+            <div *ngIf="formulario.get('precio').hasError('required') && formulario.get('precio').touched" class="error-message">
+                El campo "Precio" es obligatorio.
+            </div>
+            <div *ngIf="formulario.get('precio').hasError('precioNegativo') && formulario.get('precio').touched" class="error-message">
+                El campo "Precio" debe ser un número válido (pueden ser enteros o decimales con hasta dos decimales).
+            </div>
+        </div>
+
+        <div class="mb-3">
+            <label for="stock" class="form-label">Stock</label>
+            <input type="text" class="form-control" formControlName="stock">
+            <div *ngIf="formulario.get('stock').hasError('required') && formulario.get('stock').touched" class="error-message">
+                El campo "Stock" es obligatorio.
+            </div>
+            <div *ngIf="formulario.get('stock').hasError('stockNegativo') && formulario.get('stock').touched" class="error-message">
+                El campo "Stock" debe ser un número entero.
+            </div>
+        </div>
+
+        
+        <div class="mb-3">
+          <label for="categoria" class="form-label">Categoría</label>
+          <select class="form-select" formControlName="codCategoria">
+            <option value="" disabled selected>Selecciona categoría</option>
+
+              <option [value]="row.codigo" *ngFor="let row of listaCategorias">{{row.nombre}}</option>
+          </select>
+          <div *ngIf="formulario.get('codCategoria').hasError('categoriaRequerida') && formulario.get('codCategoria').touched" class="error-message">
+              Debes seleccionar una Categoría.
           </div>
-         
+      </div>
+      
 
-          <button type="button" class="btn btn-primary"  (click)="grabarDatos()">Registrar</button>
-        </div>
+      
+
+        <button type="submit" class="btn btn-primary" [disabled]="formulario.invalid">Registrar</button>
     </form>
-
 </div>
