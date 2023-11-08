@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { FormGroup, FormBuilder, Validators, AbstractControl } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Categoria } from 'src/app/modelo/Categoria';
 import { Producto } from 'src/app/modelo/Producto';
@@ -11,64 +12,83 @@ import Swal from 'sweetalert2';
   templateUrl: './nuevo-producto.component.html',
   styleUrls: ['./nuevo-producto.component.css']
 })
-export class NuevoProductoComponent {
-  codigo:number
-  nombre:string
-  precio:number
-  stock:number
-  categoria:Categoria
-  codCategoria:number
-  errores: boolean =false;
+export class NuevoProductoComponent implements OnInit {
+  formulario: FormGroup;
+  listaCategorias: Categoria[] = [];
 
-  nombrePattern = /^[A-Za-z\s]+$/ // Solo letras y espacios para el nombre
-  precioPattern = /^\d+(\.\d{1,2})?$/ // Números enteros o decimales con hasta 2 decimales para el precio
-  stockPattern = /^\d+$/ // Solo números enteros para el stock
+  constructor(
+    private fb: FormBuilder,
+    private apiCategoria: CategoriaService,
+    private apiPro: ProductoService,
+    private ruta: Router
+  ) {}
 
-  listaCategorias:Categoria[]=[]
+  ngOnInit() {
+    this.apiCategoria.getCategorias().subscribe((response) => {
+      this.listaCategorias = response;
+    });
 
-  constructor(private apiCategoria:CategoriaService, private apiPro:ProductoService, private ruta:Router){}
-
-  ngOnInit(){
-    this.apiCategoria.getCategorias().subscribe(response=>{
-      this.listaCategorias=response
-    })
+    this.formulario = this.fb.group({
+      nombre: ['', [Validators.required, this.nombreValidator]],
+      precio: ['', [Validators.required, this.precioPositivoValidator]],
+      stock: ['', [Validators.required, this.stockPositivoValidator]],
+      codCategoria: ['',[this.categoriaValidator]]
+    });
   }
 
-  grabarDatos(){
-    this.errores = false
-    if (
-      !this.nombre ||
-      !this.precio ||
-      !this.stock ||
-      !this.codCategoria ||
-      !this.nombrePattern.test(this.nombre) ||
-      !this.precioPattern.test(this.precio.toString()) ||
-      !this.stockPattern.test(this.stock.toString()) ||
-      !this.codCategoria
-    ) {
-      // Mostrar una alerta de que algunos campos son inválidos o están vacíos
+  precioPositivoValidator(control) {
+    const precio = parseFloat(control.value);
+    return precio > 0 ? null : { precioNegativo: true };
+  }
+
+  stockPositivoValidator(control) {
+    const stock = parseFloat(control.value);
+    return stock >= 0 ? null : { stockNegativo: true };
+  }
+
+  nombreValidator(control) {
+    const nombre = control.value;
+    const nombrePattern = /^[A-Za-z\s]+$/;
+    return nombrePattern.test(nombre) ? null : { nombreInvalido: true };
+  }
+
+  categoriaValidator(control: AbstractControl):{[key : string]: any} | null{
+    const codCategoria = control.value
+    return codCategoria ? null : {categoriaRequerida : true}
+  } 
+
+  grabarDatos() {
+    if (this.formulario.valid) {
+      const { nombre, precio, stock, codCategoria } = this.formulario.value;
+      const categoria = new Categoria(codCategoria, '');
+      const producto = new Producto(0, nombre, precio, stock, categoria);
+
+      this.apiPro.saveProducto(producto).subscribe(
+        (response) => {
+          Swal.fire({
+            text: 'Registro Exitoso',
+            icon: 'success',
+            confirmButtonColor: '#3085d6'
+          }).then((result) => {
+            if (result.isConfirmed) {
+              this.ruta.navigate(['lista-producto']);
+            }
+          });
+        },
+        (error) => {
+          Swal.fire({
+            text: 'Error al registrar el producto.',
+            icon: 'error',
+            confirmButtonColor: '#3085d6'
+          });
+        }
+      );
+    } else {
       Swal.fire({
         text: 'Por favor, completa todos los campos correctamente.',
         icon: 'error',
-        confirmButtonColor: '#3085d6',
+        confirmButtonColor: '#3085d6'
       });
-      this.errores = true
-      return; // No continuar con el registro si hay campos vacíos o inválidos
     }
-
-    this.categoria=new Categoria(this.codCategoria,"")
-    var objPro=new Producto(0,this.nombre,this.precio,this.stock,this.categoria)
-    this.apiPro.saveProducto(objPro).subscribe(response=>{
-      Swal.fire({
-        text: "Registro Exitoso",
-        icon: 'success',
-        confirmButtonColor: '#3085d6',
-      }).then((result) => {
-        if (result.isConfirmed) {
-          
-          this.ruta.navigate(["lista-producto"])
-        }
-      })
-    })
   }
 }

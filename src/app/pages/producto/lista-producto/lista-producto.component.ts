@@ -54,8 +54,7 @@ export class ListaProductoComponent {
     }).then((result) => {
       if (result.isConfirmed) {
         this.api.deleteProducto(codPro).subscribe(data => {
-          this.router.navigate([''])
-        });
+          window.location.reload();        });
       }
     })
 
