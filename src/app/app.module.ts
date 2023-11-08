@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HttpClientModule } from '@angular/common/http';
@@ -17,6 +16,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatMenuModule} from '@angular/material/menu';
 import {MatSidenavModule} from '@angular/material/sidenav';
 import {MatInputModule} from '@angular/material/input';
+import { EditarProveedorComponent } from './pages/proveedor/editar-proveedor/editar-proveedor.component';
 
 @NgModule({
   declarations: [
@@ -28,6 +28,7 @@ import {MatInputModule} from '@angular/material/input';
     AgregarOrdenCompraComponent,
     ListarProveedorComponent,
     AgregarProveedorComponent,
+    EditarProveedorComponent
   ],
   imports: [
     BrowserModule,
@@ -39,7 +40,8 @@ import {MatInputModule} from '@angular/material/input';
     SidebarComponent,
     MatMenuModule,
     MatSidenavModule,
-    MatInputModule
+    MatInputModule,
+    ReactiveFormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

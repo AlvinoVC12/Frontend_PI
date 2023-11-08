@@ -6,12 +6,43 @@ import { Producto } from 'src/app/modelo/Producto';
 import { CategoriaService } from 'src/app/services/categoria.service';
 import { ProductoService } from 'src/app/services/producto.service';
 import Swal from 'sweetalert2';
+import { FormBuilder, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-nuevo-producto',
   templateUrl: './nuevo-producto.component.html',
   styleUrls: ['./nuevo-producto.component.css']
 })
+export class NuevoProductoComponent {
+  codigo:number
+  nombre:string
+  precio:number
+  stock:number
+  categoria:Categoria
+  codCategoria:number
+
+  listaCategorias:Categoria[]=[]
+
+  constructor(private apiCategoria:CategoriaService, private apiPro:ProductoService,private formBuilder: FormBuilder,
+     private ruta:Router){}
+
+
+
+  formsRegistra = this.formBuilder.group({
+    validarRazonSocial: ['', [Validators.required]],
+    validarDireccion:['', [Validators.required]],
+    validaRuc: ['', [Validators.required]],
+    validarFechaCreacion: ['', [Validators.required]],
+    validaPais: ['', [Validators.required]]
+  });
+
+
+
+
+  ngOnInit(){
+    this.apiCategoria.getCategorias().subscribe(response=>{
+      this.listaCategorias=response
+    })
 export class NuevoProductoComponent implements OnInit {
   formulario: FormGroup;
   listaCategorias: Categoria[] = [];

@@ -30,8 +30,7 @@ export class AgregarProveedorComponent {
         confirmButtonColor: '#3085d6',
       }).then((result) => {
         if (result.isConfirmed) {
-          
-          this.ruta.navigate(["lista-producto"])
+          this.ruta.navigate(["lista-proveedor"])
         }
       })
     })

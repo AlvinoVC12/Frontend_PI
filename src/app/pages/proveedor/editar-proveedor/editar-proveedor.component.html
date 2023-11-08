@@ -1,21 +1,23 @@
 <div class="container">
-    <h4 class="text-center">Registrar Proveedor</h4>
-    <form>
+    <h4 class="text-center">Actualizar Producto</h4>
+    <form [formGroup]="formulario" *ngIf="formulario">
+
+       
 
         <div class="mb-3">
             <label for="disabledTextInput" class="form-label">Nombre</label>
-            <input type="text" class="form-control" name="nombre" [(ngModel)]="nombre">
+            <input type="text" class="form-control" name="nombre" formControlName="nombre">
             <div class="mb-3">
                 <label for="disabledTextInput" class="form-label">Direccion</label>
-                <input type="text" class="form-control" name="direccion" [(ngModel)]="direccion">
+                <input type="text" class="form-control" name="direccion" formControlName="direccion">
             </div>
             <div class="mb-3">
                 <label for="disabledTextInput" class="form-label">Contacto</label>
-                <input type="text" class="form-control" name="contacto" [(ngModel)]="contacto">
+                <input type="text" class="form-control" name="contacto" formControlName="contacto">
             </div>
             <div class="mb-3">
                 <label for="disabledTextInput" class="form-label">Fecha</label>
-                <input type="datetime-local" class="form-control" name="fechaRegistro" [(ngModel)]="fechaRegistro">
+                <input type="datetime-local" class="form-control" name="fechaRegistro" formControlName="fechaRegistro">
             </div>
 
 
