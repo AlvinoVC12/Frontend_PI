@@ -5,17 +5,34 @@
        
 
         <div class="mb-3">
-            <label for="disabledTextInput" class="form-label">Nombre</label>
+            <label for="nombre" class="form-label">Nombre</label>
             <input type="text" class="form-control" name="nombre" formControlName="nombre">
         </div>
+        <div class="error-message" *ngIf="formulario.get('nombre').hasError('required') && formulario.get('nombre').touched">
+          El campo "Nombre" es obligatorio.
+      </div>
+      <div class="error-message" *ngIf="formulario.get('nombre').hasError('nombreInvalido') && formulario.get('nombre').touched">
+        El nombre contiene caracteres no válidos.
+      </div>
         <div class="mb-3">
-            <label for="disabledTextInput" class="form-label">Precio</label>
+            <label for="precio" class="form-label">Precio</label>
             <input type="text" class="form-control" name="precio" formControlName="precio">
+            <div class="error-message" *ngIf="formulario.get('precio').hasError('required') && formulario.get('precio').touched">
+              El campo "Precio" es obligatorio.
+          </div>
+          <div class="error-message" *ngIf="formulario.get('precio').hasError('precioNegativo') && formulario.get('precio').touched">
+            El precio debe ser un número positivo.
+        </div>
           <div class="mb-3">
-            <label for="disabledTextInput" class="form-label">Stock</label>
+            <label for="stock" class="form-label">Stock</label>
             <input type="text" class="form-control" name="stock"  formControlName="stock">
           </div>     
-         
+          <div class="error-message" *ngIf="formulario.get('stock').hasError('required') && formulario.get('stock').touched">
+            El campo "Stock" es obligatorio.
+        </div>
+           <div class="error-message" *ngIf="formulario.get('stock').hasError('stockNegativo') && formulario.get('stock').touched">
+            El stock debe ser un número positivo o cero.
+           </div>
           <div class="mb-3">
             <label for="disabledTextInput" class="form-label">Categoria</label>
             <select class="form-select" formControlName="categoria" name="categoria">

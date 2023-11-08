@@ -1,0 +1,5 @@
+.error-message {
+  color: red; /* Cambia el color del texto a rojo */
+  font-size: 14px; /* Cambia el tamaño de fuente */
+  margin-top: 5px; /* Agrega un margen superior para separarlos del campo */
+}
