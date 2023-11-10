@@ -17,6 +17,9 @@ import {MatMenuModule} from '@angular/material/menu';
 import {MatSidenavModule} from '@angular/material/sidenav';
 import {MatInputModule} from '@angular/material/input';
 import { EditarProveedorComponent } from './pages/proveedor/editar-proveedor/editar-proveedor.component';
+import { ListaUsuarioComponent } from './pages/usuario/lista-usuario/lista-usuario.component';
+import { NuevoUsuarioComponent } from './pages/usuario/nuevo-usuario/nuevo-usuario.component';
+import { EditarUsuarioComponent } from './pages/usuario/editar-usuario/editar-usuario.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +31,10 @@ import { EditarProveedorComponent } from './pages/proveedor/editar-proveedor/edi
     AgregarOrdenCompraComponent,
     ListarProveedorComponent,
     AgregarProveedorComponent,
-    EditarProveedorComponent
+    EditarProveedorComponent,
+    ListaUsuarioComponent,
+    NuevoUsuarioComponent,
+    EditarUsuarioComponent
   ],
   imports: [
     BrowserModule,

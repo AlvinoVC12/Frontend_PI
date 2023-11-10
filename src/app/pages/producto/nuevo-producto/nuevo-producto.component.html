@@ -2,23 +2,6 @@
     <h4 class="text-center">Registrar Producto</h4>
     <form [formGroup]="formulario" (ngSubmit)="grabarDatos()">
         <div class="mb-3">
-            <label for="disabledTextInput" class="form-label">Nombre</label>
-            <input type="text" class="form-control" name="nombre" [(ngModel)]="nombre">
-            <mat-hint style="color:red" *ngIf="formsRegistra.controls.validarRazonSocial.touched">
-              <span *ngIf="formsRegistra.controls.validarRazonSocial.hasError('required')">
-              Razón social es requerido
-              </span>
-              <span *ngIf="formsRegistra.controls.validarRazonSocial.hasError('pattern')">
-              Razón social debe contener de 3 a 30 caracteres
-              </span>
-          </mat-hint>
-          <div class="mb-3">
-            <label for="disabledTextInput" class="form-label">Precio</label>
-            <input type="text" class="form-control" name="precio"  [(ngModel)]="precio">
-          </div>     
-          <div class="mb-3">
-            <label for="disabledTextInput" class="form-label">Stock</label>
-            <input type="text" class="form-control" name="stock" [(ngModel)]="stock">
             <label for="nombre" class="form-label">Nombre</label>
             <input type="text" class="form-control" formControlName="nombre">
             <div *ngIf="formulario.get('nombre').hasError('required') && formulario.get('nombre').touched" class="error-message">
