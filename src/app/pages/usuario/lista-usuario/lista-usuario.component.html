@@ -1,0 +1,62 @@
+<div class="container">
+
+
+
+
+
+
+
+
+
+        
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <table class="table table-striped mat-elevation-z8">
+        <thead>
+            <tr>
+                <th>Código</th>
+                <th>Nombre</th>
+                <th>Apellido</th>
+                <th>DNI</th>
+                <th>Usuario</th>
+                <th></th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let item of listaUsuarios">
+                <td>{{item.codigo}}</td>
+                <td>{{item.nombre}}</td>
+                <td>{{item.apellido}}</td>
+                <td>{{item.dni}}</td>
+                <td>{{item.usuario}}</td>
+                <td>
+                    <button type="button" class="btn btn-warning" (click)="editar(item.codigo)">Editar</button>
+                </td>
+                <td>
+                    <button type="button" class="btn btn-danger" (click)="eliminar(item.codigo)">Eliminar</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
