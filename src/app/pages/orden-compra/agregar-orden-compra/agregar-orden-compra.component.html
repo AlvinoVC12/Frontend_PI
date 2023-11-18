@@ -1,1 +1,23 @@
-<p>agregar-orden-compra works!</p>
+<div class="container">
+    <h4 class="text-center">Registrar Orden de compra</h4>
+    <form>
+
+        <div class="mb-3">
+           
+            <div class="mb-3">
+                <label for="disabledTextInput" class="form-label">Fecha</label>
+                <input type="datetime-local" class="form-control" name="fechaRegistro" [(ngModel)]="fecha">
+            </div>
+
+            <div class="mb-3">
+                <label for="disabledTextInput" class="form-label">Proveedor</label>
+                <select class="form-select" [(ngModel)]="codProveedor" name="Proveedor">
+                  <option value="{{row.codigo}}" *ngFor="let row of listaProveedor">{{row.nombre}}</option>
+                </select>
+              </div>
+
+            <button type="submit" class="btn btn-primary" (click)="grabarDatos()">Registrar</button>
+        </div>
+    </form>
+
+</div>

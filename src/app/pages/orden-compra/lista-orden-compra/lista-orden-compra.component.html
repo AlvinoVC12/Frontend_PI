@@ -5,23 +5,25 @@
 							<th>Código</th>
 							<th>Fecha</th>
 							<th>Proveedor</th>
-							<th>Nro Productos</th>
 							<th></th>
 							<th></th>
 					</tr>
 			</thead>
 			<tbody>
-					<tr *ngFor="let item of listaProductos">
+					<tr *ngFor="let item of listaOrden">
 							<td>{{item.codigo}}</td>
-							<td>{{item.nombre}}</td>
-							<td>{{item.precio}}</td>
-							<td>{{item.stock}}</td>
-							<td>{{item.categoria.nombre}}</td>
+							<td>{{item.fecha}}</td>
+							<td>{{item.proveedor.nombre}}</td>
+						
 							<td>
 									<button type="button" class="btn btn-warning" (click)="editar(item.codigo)">Editar</button>
 							</td>
 							<td>
 									<button type="button" class="btn btn-danger" (click)="eliminar(item.codigo)">Eliminar</button>
+							</td>
+							<td>
+								<button>Detalles</button>
+
 							</td>
 					</tr>
 			</tbody>
