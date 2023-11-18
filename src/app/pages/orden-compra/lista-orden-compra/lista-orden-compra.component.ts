@@ -22,7 +22,8 @@ export class ListaOrdenCompraComponent {
   editar(codOrd:number) {
     this.router.navigate(['', codOrd])
   }
-  nuevaOrden(codOrd:number){
+  
+  nuevaOrden(){
     this.router.navigate(['agregar-orden-compra']); 
   }
   

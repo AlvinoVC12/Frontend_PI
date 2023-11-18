@@ -1,6 +1,7 @@
 <div class="container">
     <h4 class="text-center">Registrar Orden de compra</h4>
     <form>
+        
 
         <div class="mb-3">
            
@@ -12,6 +13,8 @@
             <div class="mb-3">
                 <label for="disabledTextInput" class="form-label">Proveedor</label>
                 <select class="form-select" [(ngModel)]="codProveedor" name="Proveedor">
+                    <option value="" disabled selected>Selecciona Proveedor</option>
+
                   <option value="{{row.codigo}}" *ngFor="let row of listaProveedor">{{row.nombre}}</option>
                 </select>
               </div>
