@@ -9,6 +9,9 @@ import { EditarProveedorComponent } from './pages/proveedor/editar-proveedor/edi
 import { ListaUsuarioComponent } from './pages/usuario/lista-usuario/lista-usuario.component';
 import { NuevoUsuarioComponent } from './pages/usuario/nuevo-usuario/nuevo-usuario.component';
 import { EditarUsuarioComponent } from './pages/usuario/editar-usuario/editar-usuario.component';
+import { ListaOrdenCompraComponent } from './pages/orden-compra/lista-orden-compra/lista-orden-compra.component';
+import { ListaOrdenCompraDetalleComponent } from './pages/orden-compra-detalle/lista-orden-compra-detalle/lista-orden-compra-detalle.component';
+import { AgregarOrdenCompraComponent } from './pages/orden-compra/agregar-orden-compra/agregar-orden-compra.component';
 
 const routes: Routes = [
   { path: 'lista-producto', component:ListaProductoComponent },
@@ -19,7 +22,11 @@ const routes: Routes = [
   {path: 'proveedor/editar/:id', component:EditarProveedorComponent},
   { path: 'lista-usuario', component:ListaUsuarioComponent },
   { path: 'nuevo-usuario', component:NuevoUsuarioComponent },
-  { path: 'usuario/editar/:id', component:EditarUsuarioComponent }
+  { path: 'usuario/editar/:id', component:EditarUsuarioComponent },
+  { path: 'agregar-orden-compra', component:AgregarOrdenCompraComponent},
+  { path: 'lista-orden-compra', component:ListaOrdenCompraComponent},
+  { path: 'lista-orden-compra-detalle', component:ListaOrdenCompraDetalleComponent}
+
 ];
 
 @NgModule({

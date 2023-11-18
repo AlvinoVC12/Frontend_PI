@@ -1,0 +1,25 @@
+<div class="container">
+	<table class="table table-striped">
+			<thead>
+					<tr>
+							<th>Cantidad</th>
+							<th>Observacion</th>
+                            <th>Total</th>
+                            <th>Cod Orden de compra</th>
+                            <th>Producto</th>
+
+
+					</tr>
+			</thead>
+			<tbody>
+					<tr *ngFor="let item of listaOrdenDetalle">
+							<td>{{item.cantidad}}</td>
+							<td>{{item.observacion}}</td>
+                            <td>{{item.total}}</td>
+							<td>{{item.ordenCompra.codigo}}</td>
+							<td>{{item.producto.nombre}}</td>
+
+					</tr>
+			</tbody>
+	</table>
+</div>

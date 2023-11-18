@@ -6,22 +6,29 @@
   </button>
 
   <div class="collapse navbar-collapse" id="navbarNav">
-    <button mat-button [matMenuTriggerFor]="aboveMenu">Usuario</button>
-    <mat-menu #aboveMenu="matMenu" yPosition="above">
+    <button mat-button [matMenuTriggerFor]="usuarioMenu">Usuario</button>
+    <mat-menu #usuarioMenu="matMenu" yPosition="above">
       <a mat-menu-item href="/lista-usuario">Lista Usuario</a>
       <a mat-menu-item href="/nuevo-usuario">Nuevo Usuario</a>
     </mat-menu>
     
-    <button mat-button [matMenuTriggerFor]="aboveMenu">Producto</button>
-    <mat-menu #aboveMenu="matMenu" yPosition="above">
+    <button mat-button [matMenuTriggerFor]="productoMenu">Producto</button>
+    <mat-menu #productoMenu="matMenu" yPosition="above">
       <a mat-menu-item href="/lista-producto">Lista Producto</a>
       <a mat-menu-item href="/nuevo-producto">Nuevo Producto</a>
     </mat-menu>
 
-    <button mat-button [matMenuTriggerFor]="belowMenu">Proveedor</button>
-    <mat-menu #belowMenu="matMenu" yPosition="below">
+    <button mat-button [matMenuTriggerFor]="proveedorMenu">Proveedor</button>
+    <mat-menu #proveedorMenu="matMenu" yPosition="below">
       <a mat-menu-item href="/lista-proveedor">Lista Proveedor</a>
       <a mat-menu-item href="/agregar-proveedor">Nuevo Proveedor</a>
+    </mat-menu>
+
+    <button mat-button [matMenuTriggerFor]="ordenCompraMenu">Orden Compra</button>
+    <mat-menu #ordenCompraMenu="matMenu" yPosition="below">
+      <a mat-menu-item href="/lista-orden-compra">Lista</a>
+      <a mat-menu-item href="/lista-orden-compra-detalle">Detalle</a>
+
     </mat-menu>
 
     <button mat-button [matMenuTriggerFor]="beforeMenu">Before</button>

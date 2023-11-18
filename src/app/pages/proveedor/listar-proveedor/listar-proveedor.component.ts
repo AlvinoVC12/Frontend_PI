@@ -36,7 +36,9 @@ export class ListarProveedorComponent {
     }).then((result) => {
       if (result.isConfirmed) {
         this.api.deleteProveedor(codPro).subscribe(data => {
-          this.router.navigate(['lista-proveedor'])
+                    window.location.reload();       
+
+          //this.router.navigate(['lista-proveedor'])
         });
       }
     })
